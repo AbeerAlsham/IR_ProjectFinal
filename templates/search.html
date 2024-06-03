@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Engine</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="search-container">
+        <form id="searchForm" action="/search" method="post">
+            <input type="text" id="searchBox" name="query" class="search-box" placeholder="Search...">
+            <button type="button" id="suggestButton" class="suggest-button"
+                onclick="fetchSuggestions()">Suggestions</button>
+            <input type="submit" value="Search" class="search-button">
+        </form>
+        <div class="selectors-container">
+            <select id="datasetSelector" name="dataset" class="dataset-selector">
+                <option value="antique">Antique Dataset</option>
+                <option value="lotte">Lotte Dataset</option>
+            </select>
+            <select id="languageSelector" name="language" class="language-selector">
+                <option value="english">English</option>
+                <option value="multilingual">Multilingual</option>
+            </select>
+        </div>
+        <div class="spellcheck-container">
+            <select id="spellcheckSelector" name="spellcheck" class="spellcheck-selector">
+                <option value="none">No SpellCheck</option>
+                <option value="offline">Offline Terms Spellcheck</option>
+                <option value="online">Online Context Spellcheck</option>
+            </select>
+        </div>
+    </div>
+    <div id="suggestionsList" class="suggestions-list"></div>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+
+</html>
